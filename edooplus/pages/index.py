@@ -1,19 +1,26 @@
 import pynecone as pc
 from ..helpers.navbar import navbar
+from ..helpers.not_logged import login_prompt
+from ..state.user import LoginState
 
 def index():
     return pc.center(
         navbar(),
-        pc.box(
-            pc.vstack(
-                pc.text(f"Hello world!", padding_bottom="1em"),
-                padding="2em",
-                shadow="2xl",
-                border_radius="lg",
-                
+        pc.cond(
+            LoginState.logged_in,
+            pc.box(
+                pc.vstack(
+                    pc.text(f"Hello world!", padding_bottom="1em"),
+                    padding="2em",
+                    shadow="2xl",
+                    border_radius="lg",
+                    
+                ),
+                padding="7em"
             ),
-            padding="7em"
+            login_prompt(),
         ),
+
 
         width="100%",
         height="100vh",
