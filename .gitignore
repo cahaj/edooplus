@@ -1,2 +1,6 @@
-.web.pyc__pycache__/*.py[cod]*$py.class
+.web
+.pyc
+__pycache__/
+*.py[cod]
+*$py.class
 pynecone.db
